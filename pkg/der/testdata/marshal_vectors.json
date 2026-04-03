@@ -1,0 +1,81 @@
+[
+  {
+    "description": "bool true",
+    "go_type": "bool",
+    "value": true,
+    "encoded_hex": "010101"
+  },
+  {
+    "description": "bool false",
+    "go_type": "bool",
+    "value": false,
+    "encoded_hex": "010100"
+  },
+  {
+    "description": "int8(42)",
+    "go_type": "int8",
+    "value": 42,
+    "encoded_hex": "02012a"
+  },
+  {
+    "description": "int8(-1)",
+    "go_type": "int8",
+    "value": -1,
+    "encoded_hex": "0201ff"
+  },
+  {
+    "description": "int16(1000)",
+    "go_type": "int16",
+    "value": 1000,
+    "encoded_hex": "020203e8"
+  },
+  {
+    "description": "int32(0x01020304)",
+    "go_type": "int32",
+    "value": 16909060,
+    "encoded_hex": "020401020304"
+  },
+  {
+    "description": "int64(0)",
+    "go_type": "int64",
+    "value": 0,
+    "encoded_hex": "02080000000000000000"
+  },
+  {
+    "description": "int64(0x7fffffff)",
+    "go_type": "int64",
+    "value": 2147483647,
+    "encoded_hex": "0208000000007fffffff"
+  },
+  {
+    "description": "string hello",
+    "go_type": "string",
+    "value": "hello",
+    "encoded_hex": "0c0568656c6c6f"
+  },
+  {
+    "description": "string com.example.app",
+    "go_type": "string",
+    "value": "com.example.app",
+    "encoded_hex": "0c0f636f6d2e6578616d706c652e617070"
+  },
+  {
+    "description": "slice [a b c]",
+    "go_type": "[]string",
+    "value": [
+      "a",
+      "b",
+      "c"
+    ],
+    "encoded_hex": "30090c01610c01620c0163"
+  },
+  {
+    "description": "map {z:last a:first}",
+    "go_type": "map[string]string",
+    "value": {
+      "a": "first",
+      "z": "last"
+    },
+    "encoded_hex": "3117300a0c01610c05666972737430090c017a0c046c617374"
+  }
+]

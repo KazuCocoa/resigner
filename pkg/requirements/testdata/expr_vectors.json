@@ -1,0 +1,57 @@
+[
+  {
+    "description": "unconditionally true",
+    "type": "requirements.NullaryExpr",
+    "encoded_hex": "00000001"
+  },
+  {
+    "description": "unconditionally false",
+    "type": "requirements.NullaryExpr",
+    "encoded_hex": "00000000"
+  },
+  {
+    "description": "NOT false",
+    "type": "requirements.UnaryExpr",
+    "encoded_hex": "0000000900000000"
+  },
+  {
+    "description": "AND (ident AND apple-generic-anchor)",
+    "type": "requirements.BinaryExpr",
+    "encoded_hex": "00000006000000020000000f636f6d2e6578616d706c652e617070000000000f"
+  },
+  {
+    "description": "CDHash [01020304]",
+    "type": "requirements.DataExpr",
+    "encoded_hex": "000000080000000401020304"
+  },
+  {
+    "description": "InfoKeyValue CFBundleIdentifier=com.example.app",
+    "type": "requirements.FieldValueExpr",
+    "encoded_hex": "0000000500000012434642756e646c654964656e74696669657200000000000f636f6d2e6578616d706c652e61707000"
+  },
+  {
+    "description": "InfoKeyField CFBundleVersion equals 1",
+    "type": "requirements.FieldExpr",
+    "encoded_hex": "0000000a0000000f434642756e646c6556657273696f6e00000000010000000131000000"
+  },
+  {
+    "description": "TrustedCert anchor (-1)",
+    "type": "requirements.CertExpr",
+    "encoded_hex": "0000000cffffffff"
+  },
+  {
+    "description": "AnchorHash slot=leaf value=[090807]",
+    "type": "requirements.CertValueExpr",
+    "encoded_hex": "00000004000000000000000309080700"
+  },
+  {
+    "description": "CertGeneric slot=1 OID=1.2.840.113635.100.6.2.1 exists",
+    "type": "requirements.CertFieldExpr",
+    "encoded_hex": "0000000e000000010000000a2a864886f76364060201000000000000"
+  },
+  {
+    "description": "EntitlementField get-task-allow exists",
+    "type": "requirements.FieldExpr",
+    "encoded_hex": "000000100000000e6765742d7461736b2d616c6c6f77000000000000"
+  }
+]
