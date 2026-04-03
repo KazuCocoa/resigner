@@ -20,6 +20,7 @@ resigner \
   --force \
   --bundle-id-remap "com.facebook.WebDriverAgentRunner=<valid bundle id for the profile>" \
   --bundle-id-remap "com.facebook.WebDriverAgentRunner.xctrunner=<valid bundle id for the profile>" \
+  --bundle-id-remap "com.facebook.WebDriverAgentLib=<valid bundle id for the profile>" \
   /path/to/WebDriverAgentRunner-Runner.app
 ```
 
