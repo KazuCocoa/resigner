@@ -10,6 +10,9 @@ Please do not use this for production app signing.
 - go 1.26.1 or later
 - Xcode command line tools (for `codesign` and `security`)
 
+## Download Pre-built Binaries
+- [Releases](https://github.com/KazuCocoa/resigner/releases)
+
 ## Quick Start: Re-sign App
 
 ```bash
