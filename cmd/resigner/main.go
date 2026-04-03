@@ -58,19 +58,19 @@ func main() {
 			},
 			&cli.StringFlag{
 				Name:  "bundle-id",
-				Usage: "bundle id to use",
+				Usage: "bundle id to force/set (overrides existing bundle id)",
 			},
 			&cli.StringSliceFlag{
 				Name:  "bundle-id-remap",
-				Usage: "bundle id remapping to use",
+				Usage: "bundle id remapping old=new (used when --bundle-id is not set)",
 			},
 			&cli.StringFlag{
 				Name:  "team-id",
-				Usage: "team id to use",
+				Usage: "team id to filter/select provisioning profile (also checked in verification)",
 			},
 			&cli.StringFlag{
 				Name:  "udid",
-				Usage: "udid of device to resign for",
+				Usage: "target device udid used to match provisioning profile eligibility",
 			},
 			&cli.StringFlag{
 				Name:  "entitlements",
