@@ -83,9 +83,11 @@ func main() {
 			},
 		},
 		Action: func(c *cli.Context) error {
+			if c.NArg() == 0 {
+				return cli.ShowAppHelp(c)
+			}
 			if c.NArg() != 1 {
-				_ = cli.ShowCommandHelp(c, c.Command.Name)
-				return nil
+				return fmt.Errorf("expected exactly 1 target argument")
 			}
 			level := zap.NewAtomicLevelAt(zap.InfoLevel)
 
