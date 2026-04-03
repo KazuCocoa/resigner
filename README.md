@@ -20,7 +20,7 @@ resigner \
   --force \
   --bundle-id-remap "com.facebook.WebDriverAgentRunner=<valid bundle id for the profile>" \
   --bundle-id-remap "com.facebook.WebDriverAgentRunner.xctrunner=<valid bundle id for the profile>" \
-  /Users/kazu/Downloads/WebDriverAgentRunner-Runner.app
+  /path/to/WebDriverAgentRunner-Runner.app
 ```
 
 `<valid bundle id for the profile>` should match the provisioning profile app identifier.
@@ -28,8 +28,8 @@ resigner \
 ## Inspect Current Signatures
 
 ```bash
-resigner --inspect /Users/kazu/Downloads/WebDriverAgentRunner-Runner.app
-resigner --inspect /Users/kazu/Downloads/WebDriverAgentRunner-Runner.ipa
+resigner --inspect /path/to/WebDriverAgentRunner-Runner.app
+resigner --inspect /path/to/WebDriverAgentRunner-Runner.ipa
 ```
 
 This prints each discovered bundle path with:
@@ -83,7 +83,7 @@ security export \
   -t identities \
   -f pkcs12 \
   -P "$P12_PASSWORD" \
-  -o ~/sign2/mysign.p12
+  -o ~/sign/mysign.p12
 
 # show it once so you can store it in your secret manager
 echo "$P12_PASSWORD"
