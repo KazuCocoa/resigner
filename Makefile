@@ -9,6 +9,14 @@ CGO_LDFLAGS := $(shell go env CGO_LDFLAGS) -mmacos-version-min=10.15
 
 SOURCES := $(shell find . -path ./vendor -prune -o -name '*.go' -print) go.mod go.sum
 
+ARCHIVES := \
+	build/darwin-amd64.tar.gz \
+	build/darwin-arm64.tar.gz \
+	build/linux-386.tar.gz \
+	build/linux-amd64.tar.gz \
+	build/windows-386.zip \
+	build/windows-amd64.zip
+
 default: resigner
 
 all: \
@@ -19,15 +27,9 @@ all: \
 	build/windows-386/resigner.exe \
 	build/windows-amd64/resigner.exe
 
-compress: \
-	build/darwin-amd64/resigner.gz \
-	build/darwin-arm64/resigner.gz \
-	build/linux-386/resigner.gz \
-	build/linux-amd64/resigner.gz \
-	build/windows-386/resigner.exe.gz \
-	build/windows-amd64/resigner.exe.gz
-
 ci: all
+
+compress: all $(ARCHIVES)
 
 test:
 	go test ./...
@@ -56,5 +58,11 @@ build/windows-%/resigner: $(SOURCES)
 build/windows-%/resigner.exe: build/windows-%/resigner
 	cp "$<" "$@"
 
-%.gz: %
-	gzip -c -9 "$<" > "$@"
+build/darwin-%.tar.gz: build/darwin-%/resigner
+	tar -C build -czf "$@" "darwin-$*"
+
+build/linux-%.tar.gz: build/linux-%/resigner
+	tar -C build -czf "$@" "linux-$*"
+
+build/windows-%.zip: build/windows-%/resigner.exe
+	cd build && zip -rq "windows-$*.zip" "windows-$*"
