@@ -6,7 +6,7 @@ Please do not use this for production app signing.
 
 ## Requirements
 
-- macOS
+- macOS (Not tested on other platforms, but might work with Go's cross-compilation)
 - go 1.26.1 or later
 - Xcode command line tools (for `codesign` and `security`)
 
