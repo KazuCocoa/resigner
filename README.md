@@ -138,10 +138,13 @@ openssl pkcs12 -info -in mysign.p12 -noout
 
 ## Provisioning Profile Checks
 
-### Profile Locations
+### Profile Locations for '--profile' argument
 
 - Xcode auto-generated (including free account): `~/Library/Developer/Xcode/UserData/Provisioning Profiles`
 - System-cached profiles: `~/Library/MobileDevice/Provisioning Profiles`
+
+Recommended to copy the target profile to a separate directory and point `--profile` there,
+to avoid accidentally using an unintended profile.
 
 ### Decode a Profile
 
@@ -179,11 +182,12 @@ security cms -D -i /path/to/profile.mobileprovision > /tmp/profile.plist
 
 ```bash
 # Scan for matching profiles and show expiration status
-for f in /Users/kazu/sign/profiles/*; do
+BUNDLE_ID_SUBSTR="com.kazucocoa.WebDriverAgentRunner"
+for f in /path/to/profiles/*; do
   [ -f "$f" ] || continue
   security cms -D -i "$f" > /tmp/p.plist 2>/dev/null || continue
   appid=$(/usr/libexec/PlistBuddy -c "Print :Entitlements:application-identifier" /tmp/p.plist 2>/dev/null)
-  if [[ "$appid" == *"com.kazucocoa.WebDriverAgentRunner"* ]]; then
+  if [[ "$appid" == *"$BUNDLE_ID_SUBSTR"* ]]; then
     echo "FILE:$f"
     /usr/libexec/PlistBuddy -c "Print :Name" /tmp/p.plist
     /usr/libexec/PlistBuddy -c "Print :ExpirationDate" /tmp/p.plist
