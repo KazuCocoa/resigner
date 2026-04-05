@@ -13,6 +13,35 @@ Please do not use this for production app signing.
 ## Download Pre-built Binaries
 - [Releases](https://github.com/KazuCocoa/resigner/releases)
 
+### Get via CLI
+
+#### macOS (Intel)
+```bash
+curl -LO https://github.com/KazuCocoa/resigner/releases/download/<version>/darwin-amd64.tar.gz
+```
+
+#### macOS (Apple Silicon)
+```bash
+curl -LO https://github.com/KazuCocoa/resigner/releases/download/<version>/darwin-arm64.tar.gz
+```
+
+#### Linux (AMD64)
+```bash
+curl -LO https://github.com/KazuCocoa/resigner/releases/download/<version>/linux-amd64.tar.gz
+```
+
+#### Linux (386)
+```bash
+curl -LO https://github.com/KazuCocoa/resigner/releases/download/<version>/linux-386.tar.gz
+```
+
+#### Windows (PowerShell)
+```powershell
+Invoke-WebRequest -Uri "https://github.com/KazuCocoa/resigner/releases/download/<version>/windows-amd64.zip" -OutFile "resigner-windows-amd64.zip"
+```
+
+**Note:** Replace `<version>` with the latest version from [Releases](https://github.com/KazuCocoa/resigner/releases)
+
 ## Quick Start: Re-sign App
 
 ```bash
