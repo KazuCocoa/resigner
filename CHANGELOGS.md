@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## [Unreleased]
+## [0.1.2] - 2026-04-04
 
 ### Changed
 - Improved CLI flag help descriptions for better AI agent understanding
