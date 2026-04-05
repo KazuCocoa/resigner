@@ -13,9 +13,9 @@ import (
 	"testing"
 	"time"
 
+	"go.uber.org/zap"
 	"resigner/pkg/fs"
 	"resigner/pkg/keychain"
-	"go.uber.org/zap"
 )
 
 type stubCodeSigner struct {
@@ -441,13 +441,13 @@ func TestSigningConfigNormalize_WithProfileProvider_FindsIdentity(t *testing.T) 
 
 	cfg := SigningConfig{
 		ProfileProvider: stubProfileProvider{
-			profilesResult:   []ProfileFingerprint{fp},
+			profilesResult:    []ProfileFingerprint{fp},
 			certificateResult: cert,
 			certificateOK:     true,
 			profileResult:     profile,
 			profileOK:         true,
 		},
-		Key:  key,
+		Key:    key,
 		TeamID: "OTHER",
 		CertOpts: x509.VerifyOptions{
 			Roots:         x509.NewCertPool(),

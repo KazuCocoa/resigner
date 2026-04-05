@@ -15,10 +15,10 @@ import (
 	"testing"
 	"time"
 
-	"resigner/pkg/fs"
 	"github.com/github/smimesign/ietf-cms/protocol"
 	"go.uber.org/zap"
 	"howett.net/plist"
+	"resigner/pkg/fs"
 )
 
 func TestReadProfile(t *testing.T) {
@@ -310,15 +310,15 @@ func makeTestMobileProvisionData(t *testing.T, expiration time.Time, teamID, bun
 			"get-task-allow":                      false,
 			"keychain-access-groups":              []string{teamID + ".*"},
 		},
-		"TeamIdentifier":        []string{teamID},
+		"TeamIdentifier":              []string{teamID},
 		"ApplicationIdentifierPrefix": []string{teamID},
-		"DeveloperCertificates": [][]byte{certDER},
-		"Platform":              []string{"iOS"},
-		"ExpirationDate":        expiration,
-		"CreationDate":          time.Now().Add(-48 * time.Hour),
-		"Name":                  "Unit Test Generated Provisioning Profile",
-		"UUID":                  "11111111-2222-3333-4444-555555555555",
-		"Version":               1,
+		"DeveloperCertificates":       [][]byte{certDER},
+		"Platform":                    []string{"iOS"},
+		"ExpirationDate":              expiration,
+		"CreationDate":                time.Now().Add(-48 * time.Hour),
+		"Name":                        "Unit Test Generated Provisioning Profile",
+		"UUID":                        "11111111-2222-3333-4444-555555555555",
+		"Version":                     1,
 	}
 
 	content, err := plist.Marshal(payload, plist.XMLFormat)
