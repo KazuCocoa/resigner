@@ -35,7 +35,12 @@ curl -LO https://github.com/KazuCocoa/resigner/releases/download/<version>/linux
 curl -LO https://github.com/KazuCocoa/resigner/releases/download/<version>/linux-386.tar.gz
 ```
 
-#### Windows (PowerShell)
+#### Windows (386) - PowerShell
+```powershell
+Invoke-WebRequest -Uri "https://github.com/KazuCocoa/resigner/releases/download/<version>/windows-386.zip" -OutFile "resigner-windows-386.zip"
+```
+
+#### Windows (AMD64) - PowerShell
 ```powershell
 Invoke-WebRequest -Uri "https://github.com/KazuCocoa/resigner/releases/download/<version>/windows-amd64.zip" -OutFile "resigner-windows-amd64.zip"
 ```
