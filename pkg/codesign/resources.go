@@ -10,8 +10,8 @@ import (
 	"regexp"
 	"sync"
 
-	"resigner/pkg/fs"
 	"howett.net/plist"
+	"resigner/pkg/fs"
 
 	sha256Simd "github.com/minio/sha256-simd"
 )

@@ -1,8 +1,8 @@
 package certs
 
 import (
-	_ "embed"
 	"crypto/x509"
+	_ "embed"
 )
 
 // NOTE: Apple certificates need periodic updates. Current expiration dates:

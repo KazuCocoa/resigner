@@ -5,8 +5,8 @@ import (
 	"path/filepath"
 	"testing"
 
-	"resigner/pkg/fs"
 	"howett.net/plist"
+	"resigner/pkg/fs"
 )
 
 func writeInfoFixture(t *testing.T, dir string, info map[string]interface{}) {

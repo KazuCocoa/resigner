@@ -13,10 +13,10 @@ import (
 	"sync"
 	"time"
 
-	"resigner/pkg/fs"
-	"resigner/pkg/macho"
 	"go.uber.org/zap"
 	"howett.net/plist"
+	"resigner/pkg/fs"
+	"resigner/pkg/macho"
 )
 
 const (
@@ -130,11 +130,11 @@ func extractSignatureInfoFromBinary(bin macho.Binary, config *SigningConfig) sig
 }
 
 type signatureInfoResult struct {
-	BundleID              string
-	TeamID                string
-	InfoPlist             macho.Data
-	NeedsResign           bool
-	WasSignedWithProfile  bool
+	BundleID             string
+	TeamID               string
+	InfoPlist            macho.Data
+	NeedsResign          bool
+	WasSignedWithProfile bool
 }
 
 func isBinaryInfoPlistSection(segmentName, sectionName string) bool {
@@ -181,7 +181,6 @@ func encodeAndWriteExecutable(file fs.ReadWriteFile, executable macho.Binary) er
 	})
 	return err
 }
-
 
 func readInfo(root fs.ReadWriteFS, path string, config SigningConfig) ([]byte, InfoPlist, map[string]interface{}, error) {
 	infoFile, err := root.Open(filepath.Join(path, "Info.plist"))
@@ -394,7 +393,6 @@ func updateCodeDirectoryHashesForPath(blob *macho.CodeSignatureCodeDirectoryBlob
 		blob.Hashes[-int(macho.CodeSignatureSlotKindResourceDir)] = resourceHash.Sum(nil)
 	}
 }
-
 
 type VerificationFailureHint uint
 
@@ -631,10 +629,10 @@ func (c *NativeCodeSigner) SignApp(ctx context.Context, logger *zap.Logger, root
 }
 
 type appVerificationResult struct {
-	IsValid      bool
-	HasFailure   bool
-	FailureHint  VerificationFailureHint
-	Error        error
+	IsValid     bool
+	HasFailure  bool
+	FailureHint VerificationFailureHint
+	Error       error
 }
 
 func collectAppSignatureInfo(executable macho.Binary, config *SigningConfig) appSignatureData {
@@ -785,7 +783,6 @@ func writeAppInfo(root fs.ReadWriteFS, path string, info InfoPlist, rawInfo map[
 	infoData, err := writeInfo(root, path, info, rawInfo)
 	return infoData, err
 }
-
 
 func (c *NativeCodeSigner) signChildren(ctx context.Context, logger *zap.Logger, root fs.ReadWriteFS, path string, config SigningConfig) error {
 	ctx, cancel := context.WithCancel(ctx)
@@ -941,4 +938,3 @@ func (s appexStrategy) sign(ctx context.Context, logger *zap.Logger, root fs.Rea
 	var c NativeCodeSigner
 	return c.SignApp(ctx, logger, root, path, cfg)
 }
-

@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	"resigner/pkg/fs"
 	"howett.net/plist"
+	"resigner/pkg/fs"
 )
 
 func TestCollectBundlePrintEntries_SimpleBundle(t *testing.T) {

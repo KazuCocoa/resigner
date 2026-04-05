@@ -8,9 +8,9 @@ import (
 )
 
 type hintStringExpectation struct {
-	name  string
-	hint  codesign.VerificationFailureHint
-	want  string
+	name string
+	hint codesign.VerificationFailureHint
+	want string
 }
 
 func singleHintCases() []hintStringExpectation {

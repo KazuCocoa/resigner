@@ -11,12 +11,12 @@ import (
 	"path/filepath"
 	"strings"
 
+	"go.uber.org/zap"
 	"resigner/pkg/codesign/certs"
-	"resigner/pkg/keychain"
 	"resigner/pkg/fs"
+	"resigner/pkg/keychain"
 	"resigner/pkg/macho"
 	"resigner/pkg/requirements"
-	"go.uber.org/zap"
 )
 
 var ErrCertificateMismatch = fmt.Errorf("certificate mismatch")
@@ -134,9 +134,9 @@ type SigningConfig struct {
 	BundleID    string
 	BundleIDMap map[string]string
 
-	TeamID        string
-	TeamIDPrefix  string
-	Platform      string
+	TeamID       string
+	TeamIDPrefix string
+	Platform     string
 
 	PreserveRequirements bool
 	Requirements         requirements.Requirements
@@ -191,7 +191,7 @@ func (c *SigningConfig) Normalize(ctx context.Context, logger *zap.Logger, bundl
 		return fmt.Errorf("insufficient information to choose signing cert")
 	}
 
-	c.Cert.UnhandledCriticalExtensions = nil // go doesn't understand some apple-specific cert extensions
+	c.Cert.UnhandledCriticalExtensions = nil                                       // go doesn't understand some apple-specific cert extensions
 	c.CertOpts.KeyUsages = append(c.Cert.ExtKeyUsage, x509.ExtKeyUsageCodeSigning) // need to enable codesigning usage
 
 	if err := c.ensureTrustStores(); err != nil {

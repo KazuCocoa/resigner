@@ -9,8 +9,8 @@ import (
 	"strings"
 	"testing"
 
-	"resigner/pkg/fs"
 	"go.uber.org/zap"
+	"resigner/pkg/fs"
 )
 
 func unzipIPAForTest(t *testing.T) (string, string, fs.ReadWriteFS) {

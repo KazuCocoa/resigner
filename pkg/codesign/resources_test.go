@@ -8,8 +8,8 @@ import (
 
 	stdlibfs "io/fs"
 
-	"resigner/pkg/fs"
 	"howett.net/plist"
+	"resigner/pkg/fs"
 )
 
 func writeFile(t *testing.T, root, relPath string, data []byte) {
@@ -27,8 +27,8 @@ func writeFile(t *testing.T, root, relPath string, data []byte) {
 
 func TestRulesV1Rule_UsesHighestWeightMatch(t *testing.T) {
 	rules := RulesV1{
-		`^.*$`:          {},
-		`^foo/`:         {Optional: true, Weight: 10},
+		`^.*$`:           {},
+		`^foo/`:          {Optional: true, Weight: 10},
 		`^foo/bar\.txt$`: {Omit: true, Weight: 20},
 	}
 
@@ -48,8 +48,8 @@ func TestRulesV1Rule_UsesHighestWeightMatch(t *testing.T) {
 
 func TestRulesV2Rule_UsesHighestWeightMatch(t *testing.T) {
 	rules := RulesV2{
-		`^.*$`:                  {},
-		`^.*\.lproj/`:           {Optional: true, Weight: 1000},
+		`^.*$`:                          {},
+		`^.*\.lproj/`:                   {Optional: true, Weight: 1000},
 		`^.*\.lproj/locversion\.plist$`: {Omit: true, Weight: 1100},
 	}
 
