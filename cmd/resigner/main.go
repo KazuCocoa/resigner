@@ -30,56 +30,56 @@ func main() {
 		Flags: []cli.Flag{
 			&cli.StringFlag{
 				Name:  "p12-file",
-				Usage: "Path to PKCS12 keychain file",
+				Usage: "Path to PKCS12 keychain file (required: contains signing certificate and private key)",
 			},
 			&cli.StringFlag{
 				Name:  "p12-password",
-				Usage: "Password for PKCS12 keychain file",
+				Usage: "Password to unlock the PKCS12 keychain file (required if --p12-file is set)",
 			},
 			&cli.StringSliceFlag{
 				Name:  "profile",
-				Usage: "Provisioning profile directory path(s) to use",
+				Usage: "Directory path(s) containing provisioning profiles (.mobileprovision files). Can specify multiple paths. Used to match team-id, bundle-id, and udid constraints",
 			},
 			&cli.BoolFlag{
 				Name:  "force",
-				Usage: "force resigner if already signed",
+				Usage: "Force re-signing even if app is already signed (default: skip if already signed)",
 			},
 			&cli.BoolFlag{
 				Name:  "only-verify",
-				Usage: "only check if already signed",
+				Usage: "Only verify existing signatures without re-signing (skip signing step; useful for inspection)",
 			},
 			&cli.BoolFlag{
 				Name:  "inspect",
-				Usage: "inspect bundle identifiers and current signing certificates for target app/ipa",
+				Usage: "Inspect mode: print all bundle identifiers, current signatures, team IDs, and certificates for target app/ipa (does not modify)",
 			},
 			&cli.StringFlag{
 				Name:  "bundle-version",
-				Usage: "bundle version to use",
+				Usage: "Override bundle version in Info.plist (CFBundleShortVersionString)",
 			},
 			&cli.StringFlag{
 				Name:  "bundle-id",
-				Usage: "bundle id to force/set (overrides existing bundle id)",
+				Usage: "Force a new bundle ID for all bundles (overrides existing bundle IDs and bundle-id-remap)",
 			},
 			&cli.StringSliceFlag{
 				Name:  "bundle-id-remap",
-				Usage: "bundle id remapping old=new (used when --bundle-id is not set)",
+				Usage: "Bundle ID remapping rules old=new (applied only if --bundle-id is not set). Can specify multiple mappings. E.g., com.old.app=com.new.app",
 			},
 			&cli.StringFlag{
 				Name:  "team-id",
-				Usage: "team id to filter/select provisioning profile (also checked in verification)",
+				Usage: "Team ID to filter provisioning profile selection and verify existing signatures match (constraint for profile selection)",
 			},
 			&cli.StringFlag{
 				Name:  "udid",
-				Usage: "target device udid used to match provisioning profile eligibility",
+				Usage: "Target device UDID (used to filter provisioning profiles by device eligibility, if profile provides device list)",
 			},
 			&cli.StringFlag{
 				Name:  "entitlements",
-				Usage: "file containing entitlements. get-task-allow, application-identifier, keychain-access-groups and com.apple.developer.team-identifier will be overridden by default",
+				Usage: "Entitlements plist file to embed (optional). Specify 'preserve' to keep existing entitlements. Note: get-task-allow, application-identifier, keychain-access-groups, and com.apple.developer.team-identifier are always overridden",
 			},
 			&cli.BoolFlag{
 				Name:    "verbose",
 				Aliases: []string{"v"},
-				Usage:   "increase verbosity",
+				Usage:   "Enable verbose logging (debug level)",
 			},
 		},
 		Action: func(c *cli.Context) error {
