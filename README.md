@@ -211,3 +211,11 @@ make all
 ```bash
 go test ./...
 ```
+
+## Release Process
+
+```bash
+# Update CHANGELOGS.md and commit it.
+git tag <new_version>  # please add `v` prefix, e.g. `v0.1.1`
+git push origin <new_version>
+```
